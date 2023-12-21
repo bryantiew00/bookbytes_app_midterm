@@ -1,6 +1,9 @@
 import 'package:bookbyte/backend/my_server_config.dart';
 import 'package:bookbyte/buyer/books.dart';
 import 'package:bookbyte/buyer/user.dart';
+import 'package:bookbyte/pages/mainpage.dart';
+import 'package:bookbyte/pages/profile.dart';
+import 'package:bookbyte/pages/userloginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -100,6 +103,12 @@ class _BookDetailsState extends State<BookDetails> {
               Text("Available Quantity ${widget.book.bookQty}"),
             ]),
           ),
+          widget.user.userName == "Guest"
+          ? SizedBox(
+          child: ElevatedButton(onPressed: (){Navigator.push(context,MaterialPageRoute(builder: (content) => const LoginPage()));},
+          child: const Text("Please Login to Buy")),
+          )
+          : ElevatedButton(onPressed: (){}, child: const Text("Add to Cart"))
         ]),
       ),
     );
